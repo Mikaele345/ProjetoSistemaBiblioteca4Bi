@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<!-- Fragmento da barra de navegação -->
+<div th:fragment="navbar">
+    <nav style="background-color:#1a237e; color:white; padding: 15px; display:flex; justify-content:space-between; align-items:center;">
+        <div style="font-weight:bold; font-size:20px;">
+            📚 Sistema de Biblioteca
+        </div>
+        <!-- container com display:flex para manter tudo na mesma linha -->
+        <div style="display:flex; align-items:center; gap:15px;">
+            <a href="/paginaPrincipal" style="color:white; text-decoration:none;">Início</a>
+            <a href="/usuarios" style="color:white; text-decoration:none;">Usuários</a>
+            <a href="/perfis" style="color:white; text-decoration:none;">Perfis</a>
+            <a href="/emprestimos" style="color:white; text-decoration:none;">Empréstimos</a>
+            <a href="/roles" style="color:white; text-decoration:none;">Roles</a>
+
+            <!-- form de logout inline; inclui token CSRF -->
+            <form th:action="@{/logout}" method="post">
+	 				<button type="submit">Sair</button>
+			</form>
+        </div>
+
+    </nav>
+    <div th:insert="fragments/mensagem :: message"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Usuario</title>
+    <link rel="stylesheet" th:href="@{/css/menu.css}">
+   
+</head>
+<body>
+    
+<!--barra de navegação-->
+		<div th:insert="fragments/barraNavegacao :: navbar"></div>
+		<br>
+		
+        
+		<div class="form-header">
+            <h1>Editar de usuario</h1>
+		</div>
+		<br>
+        
+        <form th:action="@{/usuarios/editar}"  th:object="${usuario}" method="post">
+        
+            <input type="hidden" th:field="*{id}">
+
+            <label for="idRole">Roles:</label>
+            <select id="idRole" th:field="*{roles}" multiple="multiple">
+                <option value="">--</option>
+                    <option th:each="r : ${roles}"
+                        th:value="${r.id}"
+                        th:text="${r.role}">
+                    </option>
+                </select>
+
+            <label>Nome:</label>
+            <input type="text" th:field="*{nome}" required><br>
+
+            <label>Email:</label>
+            <input type="email" th:field="*{email}" required><br>
+
+            <label>Senha:</label>
+            <input type="password" th:field="*{senha}" required><br>
+
+            <label>Login:</label>
+            <input type="text" th:field="*{login}" required><br>
+
+            <label>Telefone:</label>
+            <input type="text" th:field="*{telefone}"><br>
+
+            <label>Data de Cadastro:</label>
+            <input type="date" th:field="*{dataCadastro}"><br>
+
+            <button type="submit">Salvar</button>
+            <button type="button" onclick="window.location.href='/usuarios'">Cancelar</button>
+        </form>
+
+</body>
+</html>

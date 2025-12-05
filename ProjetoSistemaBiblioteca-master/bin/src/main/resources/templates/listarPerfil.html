@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfis</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="fragments/barraNavegacao :: navbar"></div>
+
+<h1>Lista de Perfis</h1>
+
+<a href="/perfis/cadastrar">Novo Perfil</a>
+
+<table border="1">
+    <tr>
+        <th>CPF</th>
+        <th>Endereço</th>
+        <th>Data Nascimento</th>
+        <th>Sexo</th>
+        <th>Preferências</th>
+        <th>Ações</th>
+    </tr>
+    <tr th:each="perfil : ${perfis}">
+        <td th:text="${perfil.cpf}"></td>
+        <td th:text="${perfil.endereco}"></td>
+        <td th:text="${perfil.dataNascimento}"></td>
+        <td th:text="${perfil.sexo}"></td>
+        <td th:text="${perfil.preferencias}"></td>
+        <td>
+            <a th:href="@{'/perfis/deletar/' + ${perfil.id}}">Excluir</a>
+					        
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

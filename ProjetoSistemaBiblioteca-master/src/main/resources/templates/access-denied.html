@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso Negado</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="~{fragments/barraNavegacao :: navbar}"></div>
+
+<div class="container">
+    <h1>Acesso Negado</h1>
+    <p>Você não tem permissão para acessar este recurso.</p>
+    <p>Apenas administradores podem realizar essa ação.</p>
+    <a href="/paginaPrincipal">Voltar para página principal</a>
+</div>
+
+</body>
+</html>

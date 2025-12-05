@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Empréstimos</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="fragments/barraNavegacao :: navbar"></div>
+
+<h1>Lista de Empréstimos</h1>
+
+<a href="/emprestimos/cadastrar">Novo Empréstimo</a>
+
+<table border="1">
+    <tr>
+        <th>Usuario</th>
+        <th>Livro</th>
+        <th>Data Empréstimo</th>
+        <th>Data Prevista</th>
+        <th>Data Devolução</th>
+        <th>Status</th>
+        <th>Ações</th>
+    </tr>
+    <tr th:each="emprestimo : ${emprestimos}">
+        <td th:text="${emprestimo.usuario.nome}"></td>
+        <td th:text="${emprestimo.livro}"></td>
+        <td th:text="${emprestimo.dataEmprestimo}"></td>
+        <td th:text="${emprestimo.dataDevolucaoPrevista}"></td>
+        <td th:text="${emprestimo.dataDevolucaoReal}"></td>
+        <td th:text="${emprestimo.status}"></td>
+        <td>
+            <a th:href="@{'/emprestimos/deletar/' + ${emprestimo.id}}">Excluir</a>
+		    	        
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

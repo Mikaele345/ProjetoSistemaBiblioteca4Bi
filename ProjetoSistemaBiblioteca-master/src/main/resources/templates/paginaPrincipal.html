@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Página Inicial - Sistema de Biblioteca</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f6fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 40px;
+            color: #1a237e;
+        }
+
+        .menu-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .menu-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            width: 220px;
+            height: 180px;
+            text-align: center;
+            padding: 25px;
+            transition: 0.3s;
+        }
+
+        .menu-card:hover {
+            background-color: #e8eaf6;
+            transform: scale(1.05);
+        }
+
+        .menu-card a {
+            text-decoration: none;
+            color: #1a237e;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            color: gray;
+            font-size: 14px;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+<div th:insert="fragments/barraNavegacao :: navbar"></div>
+
+<h1>Bem-vindo ao Sistema de Biblioteca</h1>
+
+<div class="menu-container">
+    <div class="menu-card">
+        <a href="/usuarios">
+            👤 Gerenciar Usuários
+        </a>
+        <p>Cadastre e visualize usuários do sistema.</p>
+    </div>
+
+    <div class="menu-card">
+        <a href="/perfis">
+            🪪 Gerenciar Perfis
+        </a>
+        <p>Adicione ou edite informações detalhadas dos perfis.</p>
+    </div>
+
+    <div class="menu-card">
+        <a href="/emprestimos">
+            📚 Gerenciar Empréstimos
+        </a>
+        <p>Controle os empréstimos e devoluções de livros.</p>
+    </div>
+
+    <div class="menu-card">
+        <a href="/roles">
+             Gerenciar Roles
+        </a>
+        <p>Gerencie os diferentes roles do sistema.</p>
+    </div>
+</div>
+
+<footer>
+    © 2025 - Sistema de Biblioteca | Desenvolvido com ❤️ e Thymeleaf
+</footer>
+
+</body>
+</html>

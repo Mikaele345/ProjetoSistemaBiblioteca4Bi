@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <title>Usuários</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="~{fragments/barraNavegacao :: navbar}"></div>
+
+<h1>Lista de Usuários</h1>
+
+<!-- Mostrar botão de novo usuário apenas para ADMIN -->
+<div sec:authorize="hasRole('ADMIN')">
+    <a href="/usuarios/cadastrar">Novo Usuário</a>
+</div>
+
+<table border="1">
+    <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Login</th>
+        <th>Telefone</th>
+        <th>Data de Cadastro</th>
+        <th>Roles</th>
+        <th sec:authorize="hasRole('ADMIN')">Ações</th>
+    </tr>
+    <tr th:each="usuario : ${usuarios}">
+        <td th:text="${usuario.nome}"></td>
+        <td th:text="${usuario.email}"></td>
+        <td th:text="${usuario.login}"></td>
+        <td th:text="${usuario.telefone}"></td>
+        <td th:text="${usuario.dataCadastro}"></td>
+        <td>
+            <ul>
+                <li th:each="role : ${usuario.roles}" th:text="${role.role}"></li>
+            </ul>
+        </li>
+        <td sec:authorize="hasRole('ADMIN')">
+            <a th:href="@{'/usuarios/editar/' + ${usuario.id}}">Editar</a>
+            <a th:href="@{'/usuarios/deletar/' + ${usuario.id}}">Excluir</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

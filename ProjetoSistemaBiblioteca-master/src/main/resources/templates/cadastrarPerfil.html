@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Perfil</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="fragments/barraNavegacao :: navbar"></div>
+
+<h1>Cadastrar Perfil</h1>
+
+<form th:action="@{/perfis/salvar}" th:object="${perfil}" method="post" class="formulario">
+
+    <label for="idUsuario">Usuário:</label>
+            <select id="idUsuario" th:field="*{usuario}">
+                <option value="">--</option>
+                <option th:each="u : ${usuarios}"
+                   th:value="${u.id}"
+                   th:text="${u.login}"></option>
+                </option>
+            </select>
+    
+    <label>CPF:</label>
+    <input type="text" th:field="*{cpf}" required><br>
+
+    <label>Endereço:</label>
+    <input type="text" th:field="*{endereco}"><br>
+
+    <label>Data de Nascimento:</label>
+    <input type="date" th:field="*{dataNascimento}"><br>
+
+    <label>Sexo:</label>
+    <select th:field="*{sexo}">
+        <option value="">Selecione</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Feminino">Feminino</option>
+        <option value="Outro">Outro</option>
+    </select><br>
+
+    <label>Preferências Literárias:</label>
+    <input type="text" th:field="*{preferencias}"><br>
+
+    <button type="submit">Salvar</button>
+    <button type="button" onclick="window.location.href='/perfis'">Cancelar</button>
+</form>
+</body>
+</html>

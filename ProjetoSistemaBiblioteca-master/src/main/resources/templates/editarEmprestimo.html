@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Empréstimo</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="~{fragments/barraNavegacao :: navbar}"></div>
+
+<h1>Editar Empréstimo</h1>
+
+<form th:action="@{/emprestimos/editar}" th:object="${emprestimo}" method="post" class="formulario">
+
+    <input type="hidden" th:field="*{id}" />
+
+    <label for="usuario">Usuário:</label>
+    <select id="usuario" th:field="*{usuario}" required>
+        <option value="">--Selecione um usuário--</option>
+        <option th:each="u : ${usuarios}" th:value="${u.id}" th:text="${u.nome}"></option>
+    </select><br>
+
+    <label for="livro">Livro:</label>
+    <input type="text" id="livro" th:field="*{livro}" required><br>
+
+    <label for="dataEmprestimo">Data de Empréstimo:</label>
+    <input type="date" id="dataEmprestimo" th:field="*{dataEmprestimo}" required><br>
+
+    <label for="dataDevolucaoPrevista">Data de Devolução Prevista:</label>
+    <input type="date" id="dataDevolucaoPrevista" th:field="*{dataDevolucaoPrevista}" required><br>
+
+    <label for="dataDevolucaoReal">Data de Devolução Real:</label>
+    <input type="date" id="dataDevolucaoReal" th:field="*{dataDevolucaoReal}"><br>
+
+    <label for="status">Status:</label>
+    <select id="status" th:field="*{status}">
+        <option value="">Selecione</option>
+        <option value="Ativo">Ativo</option>
+        <option value="Devolvido">Devolvido</option>
+        <option value="Atrasado">Atrasado</option>
+    </select><br>
+
+    <button type="submit">Salvar</button>
+    <button type="button" onclick="window.location.href='/emprestimos'">Cancelar</button>
+</form>
+
+</body>
+</html>

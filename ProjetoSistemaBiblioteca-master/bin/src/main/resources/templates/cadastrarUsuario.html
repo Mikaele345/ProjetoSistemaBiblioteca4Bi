@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastrar Usuário</title>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+<div th:insert="fragments/barraNavegacao :: navbar"></div>
+
+<h1>Cadastrar Usuário</h1>
+
+<form th:action="@{/usuarios/salvar}" th:object="${usuario}" method="post" class="formulario">
+
+    <label for="idRole">Roles:</label>
+    <select id="idRole" th:field="*{roles}" multiple="multiple">
+        <option value="">--</option>
+            <option th:each="r : ${roles}"
+                th:value="${r.id}"
+                th:text="${r.role}">
+            </option>
+        </select>
+
+    <label>Nome:</label>
+    <input type="text" th:field="*{nome}" required><br>
+
+    <label>Email:</label>
+    <input type="email" th:field="*{email}" required><br>
+
+    <label>Senha:</label>
+    <input type="password" th:field="*{senha}" required><br>
+
+    <label>Login:</label>
+    <input type="text" th:field="*{login}" required><br>
+
+    <label>Telefone:</label>
+    <input type="text" th:field="*{telefone}"><br>
+
+    <label>Data de Cadastro:</label>
+    <input type="date" th:field="*{dataCadastro}"><br>
+
+    <button type="submit">Salvar</button>
+</form>
+</body>
+</html>
